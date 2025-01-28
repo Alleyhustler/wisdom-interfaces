@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'VT323', monospace;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+.crt {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.main-video {
+    opacity: 1;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    position: relative;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 8rem;
+    text-shadow: 0 0 5px #fff;
+    animation: flicker 3s infinite;
+    margin-bottom: 2rem;
+    margin-top: 10vh;
+    letter-spacing: 0.5rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+}
+
+.menu-item {
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #fff;
+    letter-spacing: 0.2rem;
+}
+
+.menu-item:hover {
+    text-shadow: 0 0 10px #fff;
+    transform: scale(1.1);
+}
+
+.password-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    width: 300px;
+    outline: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.2rem;
+}
+
+.password-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.password-input:focus {
+    border-bottom-color: #fff;
+    text-shadow: 0 0 5px #fff;
+}
+
+.footer {
+    position: fixed;
+    bottom: 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    animation: pulse 4s infinite;
+}
+
+.small {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+}
+
+/* Loading Bar */
+.loading-bar {
+    width: 400px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    position: relative;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1),
+        rgba(255,255,255,0.8),
+        rgba(255,255,255,0.1)
+    );
+    transition: width 0.5s linear;
+    position: relative;
+}
+
+.loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 0 0 5px #fff;
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+/* CRT Effect */
+.crt::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanline 10s linear infinite;
+    z-index: 2;
+}
+
+.crt::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at center,
+        transparent 50%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Dark Abyss */
+.dark-abyss {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.void-text {
+    color: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #fff;
+    opacity: 1;
+    margin: 20px;
+    text-align: center;
+    max-width: 80%;
+    animation: textGlitch 0.3s infinite;
+}
+
+.raven-description {
+    color: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    text-shadow: 0 0 10px #fff;
+    opacity: 1;
+    margin: 20px;
+    text-align: center;
+    max-width: 80%;
+}
+
+/* Animations */
+@keyframes scanline {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes flicker {
+    0% { opacity: 1; text-shadow: 0 0 5px #fff; }
+    5% { opacity: 0.8; text-shadow: 0 0 3px #fff; }
+    10% { opacity: 1; text-shadow: 0 0 5px #fff; }
+    15% { opacity: 0.9; text-shadow: 0 0 4px #fff; }
+    20% { opacity: 1; text-shadow: 0 0 5px #fff; }
+    55% { opacity: 1; text-shadow: 0 0 5px #fff; }
+    60% { opacity: 0.7; text-shadow: 0 0 3px #fff; }
+    65% { opacity: 1; text-shadow: 0 0 5px #fff; }
+    100% { opacity: 1; text-shadow: 0 0 5px #fff; }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes textGlitch {
+    0% { transform: translate(0) skew(0deg); filter: hue-rotate(0deg); }
+    10% { transform: translate(-2px, 2px) skew(2deg); filter: hue-rotate(90deg); }
+    30% { transform: translate(2px, -2px) skew(-2deg); filter: hue-rotate(180deg); }
+    50% { transform: translate(-1px, 1px) skew(1deg); filter: hue-rotate(270deg); }
+    70% { transform: translate(1px, -1px) skew(-1deg); filter: hue-rotate(360deg); }
+    100% { transform: translate(0) skew(0deg); filter: hue-rotate(0deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+}
+
+.social-links {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999; /* Ensure the links are on top of other content */
+}
+
+.social-link {
+    color: white; /* Change to your desired color */
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    color: #00aced; /* Change to your desired hover color (for example, Twitter blue) */
+}

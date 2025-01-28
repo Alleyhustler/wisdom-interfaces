@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisdom Interface</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="crt">
+        <video autoplay="" loop="" muted="" playsinline="" class="background-video main-video">
+            <source src="media/1.mp4" type="video/mp4">
+        </video>
+        <video loop="" muted="" playsinline="" class="background-video reality-video">
+            <source src="media/2.mp4" type="video/mp4">
+        </video>
+        <video loop="" muted="" playsinline="" class="background-video consciousness-video">
+            <source src="media/3.mp4" type="video/mp4">
+        </video>
+        <div class="screen">
+            <div class="content">
+                <h1 class="title">Wisdom Interface</h1>
+                <div class="menu">
+                    <div class="menu-item">
+                        <div>&gt; ENTER (PW=$RavenW) &lt;</div>
+                        <input type="password" class="password-input" placeholder="password required">
+                    </div>
+                    <div class="menu-item consciousness-btn">&gt; Perception: Cutting &lt;</div>
+                    <div class="menu-item reality-btn">&gt; Authenticity: Bleeding &lt;</div>
+                    <div class="menu-item">&gt; VOLUME: OFF &lt;</div>
+                </div>
+                <div class="footer">
+                    Wisdom Terminal COO™
+                    <div class="small">ALL RIGHTS DISSOLVED</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Social text links in the top-right corner -->
+    <div class="social-links">
+        <a href="https://x.com/RavenW_AI" target="_blank" class="social-link">Twitter</a>
+        <a href="https://t.me/RAvenWai" target="_blank" class="social-link">Telegram</a>
+        <a href="https://pump.fun" target="_blank" class="social-link">CA HERE</a> <!-- Assuming CA means "Contact" -->
+    </div>
+    <!-- Background music (hidden) -->
+    <iframe id="music-player" src="https://www.youtube.com/embed/s6oZ6LJeDws?enablejsapi=1&amp;controls=0&amp;autoplay=0&amp;mute=1" allow="autoplay" style="position: absolute; top: -9999px; left: -9999px; width: 0; height: 0; border: 0;"></iframe>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
